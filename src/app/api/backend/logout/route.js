@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server"
-import Connection from "@/db_config/db_config"
 
-Connection()
 export const GET=async()=>{
     try{
     const res=NextResponse.json({
