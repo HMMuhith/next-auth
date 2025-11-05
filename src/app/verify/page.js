@@ -9,6 +9,7 @@ import {toast} from 'react-hot-toast'
     // const [Error,setError]=useState(false)
 const [Token,setToken]=useState('')
 const [Success,setSuccess]=useState(false)
+const [showInput,setshowInput]=useState(true)
 const router=useRouter()
 const notify=()=>{
     setTimeout(()=>{
@@ -51,34 +52,22 @@ notify()
 
 useEffect(()=>{
 setTimeout(()=>{
-   const stopTime= document.getElementById('verification')
-   stopTime?.remove()
-   const Token=document.getElementById('verifytoken')
-   Token?.remove()
+   if(Token && Token.length>0){
+   return setshowInput(false)
+   }
+  return setshowInput(true)
 },5000)
-})
+},[Token])
 
     return(<>
     <div className="min-h-screen bg-slate-900 flex flex-col justify-center items-center">
 
        {!Success ? <h1 className="text-cyan-300 text-4xl">Verify Email</h1> :<h1 className="text-cyan-300 text-4xl">Congratulations!</h1>
  }
-        <input type="text"  name="" className="py-1 focus:outline-none pl-2 font-bold mt-7 rounded-md w-[46rem] bg-white" id="verifytoken" value={Token} readOnly/>
-        {/* {verified && (
-            <div>
-            <div className="text-2xl text-green-400" id="verification">
-                {toast.success(`Email verified `)}
-            </div>
-            <Link href='/login' className="text-white">Login</Link>
-            </div>
-        )}
-        {
-            Error && (
-                <div>
-                    Verification failed
-                </div>
-            )
-        } */}
+ {
+    showInput &&
+        <input type="text"  name="" className="py-1 focus:outline-none pl-2 font-bold mt-7 rounded-md w-[46rem] bg-white" value={Token} readOnly/>
+ }  
     </div>
     </>)
 }
