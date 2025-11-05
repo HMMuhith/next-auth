@@ -22,7 +22,7 @@ await db.execute(sql,[hashedToken,expiryDate,ID])
   html: `<p>Cilck <a href='${process.env.DOMAIN}/verify?token=${hashedToken}'>here</a> to ${TypeEmail==='VERIFY'?'verify your email':''} or copy paste the link below in your browser <br> ${process.env.DOMAIN}/verify?token=${hashedToken}</p>`
 });
 }
-
+     
 if(TypeEmail==='RESETPASS'){
 const Token=crypto.randomBytes(32).toString('hex')
 
