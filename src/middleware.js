@@ -1,4 +1,4 @@
-import { NextResponse,NextRequest } from 'next/server'
+import { NextResponse} from 'next/server'
 
  
 // This function can be marked `async` if using `await` inside
@@ -6,13 +6,12 @@ import { NextResponse,NextRequest } from 'next/server'
 
 export function middleware( request) {
 const path=request.nextUrl.pathname 
-const common_path=path==='/login' || path==='/signup' || path==='/verify' || path==='/resetpassword'
-const Token=request.cookies.get('token') || ''
+const token=request.cookies.get('Token') 
 
-// if(common_path & Token){
-//   return NextResponse.redirect(new URL('/', request.nextUrl))
-// }
-// return NextResponse.redirect(new URL('/login', request.nextUrl))
+if(path==='/verify' && !token){
+return NextResponse.redirect(new URL('/login', request.nextUrl))
+}
+
 }
  
 // See "Matching Paths" below to learn more
