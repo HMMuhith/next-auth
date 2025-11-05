@@ -10,6 +10,7 @@ const NewPass=()=>{
      const [Confirm_Password,setConfirm_Password]=useState('')
      const [Email,setEmail]=useState('')
      const [error,seterror]=useState('')
+const [Loading,setLoading]=useState(false)
 
      const router=useRouter()
      useEffect(()=>{
@@ -19,8 +20,8 @@ const NewPass=()=>{
      })
      const notifyToast=()=>{
         setTimeout(()=>{
-        toast.success('Your password reset successfully')
-
+        toast.success('Password reset successfully')
+setLoading(false)
         },2800)
      }
      const notify=()=>{
@@ -30,6 +31,7 @@ router.push('/')
      }
 const Reset=async()=>{
     try{
+        setLoading(true)
 if(!validator.equals(Password,Confirm_Password)){
    return seterror(`Password must match`)
 }
@@ -42,8 +44,8 @@ if(!validator.equals(Password,Confirm_Password)){
     catch(error){
         console.log(error)
         setTimeout(()=>{
-toast.error(`Your password reset failed`)
-
+toast.error(`Password reset failed`)
+setLoading(false)
         },2800)
     }
 
@@ -57,7 +59,7 @@ toast.error(`Your password reset failed`)
         <input type="password"  name="Confirm_Password" className="py-2 focus:outline-none pl-2 font-bold mt-7 rounded-md w-[26rem] bg-white" id="confirm_password" value={Confirm_Password} onChange={(e)=>{setConfirm_Password(e.target.value)}} placeholder="Enter confirm password"/>
      {error ? (<span className="text-sm text-red-600 my-3">{error}</span>):''}
             <div className="bg-black text-center text-white mt-4 rounded-md">
-            <button type="button" onClick={Reset} className="px-5 py-2 w-60  cursor-pointer">Submit</button> 
+            <button type="button" onClick={Reset} className="px-5 py-2 w-60  cursor-pointer">{Loading?`Processing...`:`Submit`}</button> 
             </div>
         
     
