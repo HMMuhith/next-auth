@@ -4,7 +4,7 @@ import { NextResponse,NextRequest } from "next/server";
 // import { Sendmail } from "@/sideeffect/mail";
 import { ResendMail } from "@/sideeffect/resend.js";
 
-export const POST=async(request)=>{
+export const POST=async(request)=>{   
 
 const {Name,Email,Password}=await request.json()
 try{
