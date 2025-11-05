@@ -8,9 +8,9 @@ export function middleware( request) {
 const path=request.nextUrl.pathname 
 const token=request.cookies.get('Token') 
 
-if(path==='/verify' && !token){
-return NextResponse.redirect(new URL('/login', request.nextUrl))
-}
+// if(path==='/verify' && !token){
+// return NextResponse.redirect(new URL('/login', request.nextUrl))
+// }
 
 }
  
