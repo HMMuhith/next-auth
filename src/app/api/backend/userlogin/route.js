@@ -35,8 +35,11 @@ const Token= await jwt.sign(userdata,process.env.SECRET_PASS,{expiresIn:60*60*2}
 
 const response= NextResponse.json({
 success:true,
+Name:checkUser?.Name,
 Token
 })
+
+
 response.cookies.set(`Token`,Token,{
     httpOnly:true, 
     secure:true,
