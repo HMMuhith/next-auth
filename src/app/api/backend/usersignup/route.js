@@ -2,7 +2,7 @@ import db from "@/mysql/connect";
 import bcrypt from 'bcrypt'
 import { NextResponse,NextRequest } from "next/server";
 // import { Sendmail } from "@/sideeffect/mail";
-import { ResendMail } from "@/sideeffect/resend";
+import { ResendMail } from "@/sideeffect/resend.js";
 
 export const POST=async(request)=>{
 
