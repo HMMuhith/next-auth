@@ -39,6 +39,7 @@ const [ButtonType,setButtonType]=useState(false)
             setsentMail(true)
         }
         catch (error) {
+            setsentMail(false)
             setbtnValue(true)
             failnotify()
             console.log(error)
