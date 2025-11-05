@@ -39,6 +39,7 @@ const LoginHandler=async()=>{
         console.log(response)
         if(request.data.success===true){
   console.log(response)
+  localStorage.setItem('user',request.data?.Name)
        return notify()
         }
         
@@ -66,10 +67,10 @@ return(<>
 <div className="bg-slate-900 min-h-screen flex flex-col justify-center items-center">
 <div className="flex flex-col justify-center items-center">
 <div>
-    <input type="Email" className="bg-white pb-3 mb-6 px-14 rounded-sm focus:outline-none" name="" id="" value={Email} onChange={(e)=>{ setEmail(e.target.value)}} />
+    <input type="Email" className="bg-white py-1.5 mb-6 px-14 rounded-sm focus:outline-none" name="" id="" value={Email} onChange={(e)=>{ setEmail(e.target.value)}} />
 </div>
 <div>
-    <input type="password" name="" className="bg-white pb-3 mb-8 rounded-sm px-14 focus:outline-none" value={Password} id="" onChange={(e)=>{setPassword(e.target.value)}} />
+    <input type="password" name="" className="bg-white py-1.5 mb-8 rounded-sm px-14 focus:outline-none" value={Password} id="" onChange={(e)=>{setPassword(e.target.value)}} />
 </div>
 <div >
     <input type="button" onClick={LoginHandler} className={`bg-blue-600   mb-4 text-white py-1.5 px-33 rounded-sm ${ButtonType?'cursor-pointer opacity-100':'cursor-no-drop opacity-35'} `} value={Loading?`Processing...` :'Login'} />
